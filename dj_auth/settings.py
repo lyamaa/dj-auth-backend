@@ -192,7 +192,7 @@ DJOSER = {
     'ACTIVATION_URL': 'activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
     'SOCIAL_AUTH_TOKEN_STRATEGY':'djoser.social.token.jwt.TokenStrategy',
-    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['http://localhost:8000/google', 'http://localhost:8000/facebook'],
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['https://superdjauth.herokuapp.com/google', 'https://superdjauth.herokuapp.com/facebook'],
     'SERIALIZERS': {
         'user_create': 'accounts.api.serializers.UserCreateSerializer',
         'user': 'accounts.api.serializers.UserCreateSerializer',
