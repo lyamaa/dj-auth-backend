@@ -208,8 +208,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/userinfo.ema
                                    'https://www.googleapis.com/auth/userinfo.profile', 'openid']
 SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['first_name', 'last_name']
 
-SOCIAL_AUTH_FACEBOOK_KEY = '453093329033169'
-SOCIAL_AUTH_FACEBOOK_SECRET = '6d4868628ff288de6765bfc1a3f1275c'
+SOCIAL_AUTH_FACEBOOK_KEY = '874103216697597'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'd2c0fd6bd749b2e00360cb559e46fd5a'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'email, first_name, last_name'
