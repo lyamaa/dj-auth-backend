@@ -6,17 +6,17 @@ from django.contrib.auth.models import (
     )
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, name, password=None):
+    def create_user(self, email, username, password=None, **extra_fields):
         if not email:
             raise ValueError("User must have an email")
         email = self.normalize_email(email)
-        user = self.model(email=email, name=name)
+        user = self.model(email=email, username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
     
-    def create_superuser(self, name, email, password=None):
-        user = self.create_user(name, email, password=password)
+    def create_superuser(self, username, email, password=None, **extra_fields):
+        user = self.create_user(username, email, password=password, **extra_fields)
         user.is_active = True
         user.is_staff = True
         user.is_admin = True
@@ -24,7 +24,9 @@ class CustomUserManager(BaseUserManager):
         return user
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
-    name= models.CharField(max_length=255)
+    username= models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
@@ -32,13 +34,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name']
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
     def get_full_name(self):
-        return self.name
+        return self.username
     
     def get_short_name(self):
-        return self.name
+        return self.username
     
     def has_perm(self, perm, obj=None):
         return True
